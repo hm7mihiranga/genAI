@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .fact-display {
+            margin-top: 20px;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .fact-display.show {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <button id="generateFact">Generate Random Fact</button>
+        <div id="factDisplay" class="fact-display"></div>
+    </div>
+    <script>
+        const facts = [
+            {
+                "fact": "Crocodiles can live up to 70 years.",
+                "category": "Lifespan"
+            },
+            {
+                "fact": "They can hold their breath underwater for over an hour.",
+                "category": "Behavior"
+            },
+            {
+                "fact": "Crocodiles are more closely related to birds than to lizards.",
+                "category": "Evolution"
+            },
+            {
+                "fact": "They can run up to 20 miles per hour on land.",
+                "category": "Speed"
+            },
+            {
+                "fact": "Crocodiles have the strongest bite of any animal.",
+                "category": "Physical Characteristics"
+            }
+        ];
+
+        document.getElementById('generateFact').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const fact = facts[randomIndex].fact;
+
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = fact;
+            factDisplay.classList.remove('show'); // Reset opacity
+            void factDisplay.offsetWidth; // Trigger reflow
+            factDisplay.classList.add('show'); // Fade in
+        });
+    </script>
+</body>
+</html>
